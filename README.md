@@ -1,6 +1,6 @@
 # Artificial intelligence
 
- Artificial intelligence - Computer Science and engineering at UBI
+ Artificial intelligence - Computer Science and Engineering at UBI
 
  This repository has:
 - All practical things done during AI classes.
