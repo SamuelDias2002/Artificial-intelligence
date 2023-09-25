@@ -183,7 +183,7 @@ print("\n(a) Todas as letras que aparecem em ambas as frases:")
 print(letras_em_ambas_frases)
 
 print("\n(b) As letras que aparecem na primeira frase mas não na segunda:")
-print(letras_apenas_na_primeira) #Incompleto 
+print(letras_apenas_na_primeira) 
 
 
 
@@ -193,26 +193,21 @@ print(letras_em_ambas)
 print("\n(d) As letras que só aparecem na primeira frase ou só aparecem na segunda frase:")
 print(letras_apenas_na_primeira_ou_segunda)
 
-""" Incompleto pois ao executar várias vezes obtive sempre esta resposta:
 
-Exemplo de execução:
+# EX 8 
 
-Digite a primeira frase: teste 
-Digite a segunda frase: portugues
+import networkx as nx
+import csv
 
-(a) Todas as letras que aparecem em ambas as frases:
-{'s', 't', 'e'}
+G = nx.Graph()
 
-(b) As letras que aparecem na primeira frase mas não na segunda:
-set() 
-
- - Aqui seria suposto ser {" "}?
-
-(c) As letras que aparecem simultaneamente em ambas as frases:
-{'s', 't', 'e'}
-
-(d) As letras que só aparecem na primeira frase ou só aparecem na segunda frase:
-{' ', 'p', 'u', 'o', 'r', 'g'} 
-"""
-
-# EX 8 ???
+f = open("grafo.txt", "r")
+leitura = csv.reader(f)
+for line in leitura:
+        origem, destino, distancia = line
+        distancia = int(distancia)
+        G.add_edge(origem,destino,distancia = distancia)
+print ("        Cidade -> Cidade(s) Vizinha(s)")
+for cidade in G.nodes:
+    vizinho = list(G.neighbors(cidade))
+    print(f" {cidade} -> {', '.join(vizinho)}")
