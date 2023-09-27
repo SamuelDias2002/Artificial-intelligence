@@ -12,6 +12,7 @@ Aveiro,Coimbra,80
 Viseu,Guarda,80
 Viseu,Coimbra,80
 Guarda,Castelo Branco,100
+Guarda,Braganca,200
 Coimbra,Castelo Branco,160
 Coimbra,Leiria,70
 Coimbra,Guarda,160

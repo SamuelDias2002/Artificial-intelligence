@@ -207,7 +207,10 @@ for line in leitura:
         origem, destino, distancia = line
         distancia = int(distancia)
         G.add_edge(origem,destino,distancia = distancia)
-print ("        Cidade -> Cidade(s) Vizinha(s)")
+
+print ("Cidade -> Cidade(s) Vizinha(s) \n")
 for cidade in G.nodes:
     vizinho = list(G.neighbors(cidade))
     print(f" {cidade} -> {', '.join(vizinho)}")
+
+print("\n")
