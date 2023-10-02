@@ -1,0 +1,30 @@
+Viana Castelo,Braga,50
+Viana Castelo,Porto,80
+Braga,Vila Real, 100
+Braga,Porto,50
+Porto,Vila Real,120
+Porto,Aveiro,70
+Vila Real,Braganca,140
+Vila Real,Viseu,110
+Vila Real,Guarda,150
+Aveiro,Viseu,100
+Aveiro,Coimbra,80
+Viseu,Guarda,80
+Viseu,Coimbra,80
+Guarda,Castelo Branco,100
+Guarda,Braganca,200
+Coimbra,Castelo Branco,160
+Coimbra,Leiria,70
+Coimbra,Guarda,160
+Leiria,Lisboa,130
+Lisboa,Santarem,200
+Lisboa,Setubal,50
+Lisboa,Evora,150
+Santarem,Evora,120
+Santarem,Portalegre,150
+Castelo Branco,Portalegre,80
+Portalegre,Evora,100
+Evora,Beja,80
+Beja,Faro,170
+Setubal,Beja,135
+Setubal,Faro,260
