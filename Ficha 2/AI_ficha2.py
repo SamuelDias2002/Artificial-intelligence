@@ -49,7 +49,7 @@ def encontrar_caminho_astar_Ex3(grafo, cidade_partida, cidade_destino):
     except nx.NetworkXNoPath:
         return None, None
 
-
+# "Main"
 # Carregar o grafo
 grafo = abrir()
 
@@ -64,7 +64,7 @@ caminho, comprimento_total = encontrar_caminho_Ex2(grafo, cidade_partida, cidade
 # Encontrar o caminho Ex3
 caminho,comprimento_total = encontrar_caminho_astar_Ex3(grafo, cidade_partida, cidade_destino)
 
-# "Main"
+
 if caminho:
     print(
         f"Caminho a percorrer entre a cidade de {cidade_partida} e a cidade de {cidade_destino}:")
