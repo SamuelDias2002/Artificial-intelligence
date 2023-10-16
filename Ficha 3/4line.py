@@ -1,6 +1,7 @@
 # coding: utf8
 import copy
 import random
+import time
 
 # ------------------------------------------------------------------
 
@@ -18,31 +19,22 @@ def mostra_tabuleiro(T):
             elif action == -1:
                 print("O", end=" ")
         print()
-
 # Devolve a lista de ações que se podem executar partido de um estado
 
 
 def acoes(T):
-    states = []
-    for i in range(12, 0, -1):
+    available_positions = []
+    for i in range(3 * 4):
         if T[i] == 0:
-            states.append(i)
-    return states
+            available_positions.append(i)
+    return available_positions
 
-
-# ------------------------------------------------------------------
-# devolve o estado que resulta de partir de um estado e executar uma ação
-
-
-def resultado(T, a, jog):
+# A função "resultado" deve ser ajustada para lidar com as posições
+def resultado(T, pos, jog):
     aux = copy.copy(T)
-    if aux[a] == 0:
-        if jog == 'MAX':
-            aux[a] = 1
-        elif jog == 'MIN':
-            aux[a] = -1
+    if aux[pos] == 0:
+        aux[pos] = 1 if jog == 'MAX' else -1
     return aux
-
 # ------------------------------------------------------------------
 # existem 8 possíveis alinhamentos vencedores, para cada jogador
 
@@ -115,21 +107,18 @@ def joga_max(T):
 
 # ------------------------------------------------------------------
 
-
 def joga_min(T):
     v, a, e = alfabeta(T, -10, 10, False)
     print("MIN joga para", a)
     return e
+
 # ------------------------------------------------------------------
 
 
 def jogo(p1, p2):
     # cria tabuleiro vazio
-    T = [0, 0, 0, 0,
-         0, 0, 0, 0,
-         0, 0, 0, 0]
-    # podemos partir de um estado mais "avançado"
-    # T = [1,-1,0,0,-1,0,1,0,0]
+    T = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
     mostra_tabuleiro(T)
     while acoes(T) != [] and not estado_terminal(T):
         T = p1(T)
@@ -139,30 +128,58 @@ def jogo(p1, p2):
             mostra_tabuleiro(T)
     # fim
     if utilidade(T) == 1:
-        print("Venceu o jog1")
+        print("\nVenceu o MAX\n")
     elif utilidade(T) == -1:
-        print("Venceu o jog2")
+        print("\nVenceu o MIN\n")
     else:
-        print("Empate")
+        print("\nEmpate\n")
 
 # ------------------------------------------------------------------
 # jogador aleatório
-
-
 def joga_rand(T):
-    x = random.randint(0, 12)
-    if T[x] != 0:
-        while T[x] != 0:
-            x = random.randint(0, 12)
+    while True:
+        x = random.randint(0, 11)  # Intervalo válido de índices
+        if T[x] == 0:
             T[x] = -1
-    # COMPLETAR
+            break
     return T
 
 # ------------------------------------------------------------------
+def jogo_1000x():
+    num_vitorias_max = 0
+    num_vitorias_random = 0
+    num_empates = 0
+    total_tempo = 0
+
+    for _ in range(20):
+        T = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        inicio = time.time()
+        jogo(joga_max, joga_rand)
+        resultado_jogo = utilidade(T)
+        if resultado_jogo == 1:
+            num_vitorias_max = num_vitorias_max + 1
+        elif resultado_jogo == -1:
+            num_vitorias_random =  num_vitorias_random + 1
+        else:
+            num_empates = num_empates + 1
+        fim = time.time()
+        total_tempo += (fim - inicio)
+
+    print("\nTempo para executar os 20 jogos (segundos):\n", total_tempo)
+
+    ###print("\nVitórias do MAX:\n", num_vitorias_max)
+    ###print("\nVitórias do RAND:\n", num_vitorias_random)
+    ###print("\nEmpates:\n", num_empates)"""
+
+
 # main
-
-
 # deve ganhar sempre o max:
 # jogo(joga_max, joga_rand)
 # devem empatar sempre:
-jogo(joga_max, joga_min)
+#jogo(joga_max, joga_min)
+
+
+"""Problema: 
+O max ganha sempre ao min, como suposto devido ao facto de ser o primeiro a jogar, pois quem joga primeiro tem vantagem.
+Quando é max vs random, o max ganha sempre, o que nem sempre é suposto """
+jogo_1000x()    
