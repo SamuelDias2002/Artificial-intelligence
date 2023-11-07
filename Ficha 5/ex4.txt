@@ -1,0 +1,6 @@
+4 - 
+a) Se n = 3 e Probabilidade = 1/3
+	Então para n, probabilidade 1/n
+b) Se n = 3, probabilidade = 2/3
+   Se n = 4, probabilidade = 1/4 + 3/8 + 3/8
+   Se n = n, probabilidade = 1/n + 3/n*2 + 3/n*2	
