@@ -15,4 +15,3 @@ clf.fit(treinoX, treinoY)
 
 print(clf.predict(testeX))
 print(clf.score(testeX, testeY))
-
